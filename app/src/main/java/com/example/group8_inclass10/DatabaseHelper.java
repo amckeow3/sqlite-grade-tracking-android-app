@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "grades.db";
-    final static int DATABASE_VERSION = 1;
+    final static int DATABASE_VERSION = 6;
     private static final String TAG = "database helper";
 
     public DatabaseHelper(@Nullable Context mContext) {
@@ -37,6 +37,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         GradesTable.onUpgrade(db, oldVersion, newVersion);
+        GradesTable.onCreate(db);
+
         Log.d(TAG, "onUpgrade: ");
     }
 }
